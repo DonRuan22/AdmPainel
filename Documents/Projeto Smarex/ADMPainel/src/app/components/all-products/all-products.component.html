@@ -29,7 +29,10 @@
           <td>{{ p.price | currency:'INR' }}</td>
           <td>{{ p.category }}</td>
           <td>
-            <button class="btn btn-sm btn-danger" (click)="deleteProduct(p.id)">Delete</button>
+            <div class="btn-toolbar">
+              <button class="btn btn-sm btn-danger mr-3" (click)="deleteProduct(p.id)">Delete</button>
+              <button class="btn btn-sm btn-primary mr-3" (click)="openEditForm(p.id)">Editar</button>
+            </div>
           </td>
         </tr>
         </tbody>

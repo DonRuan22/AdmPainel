@@ -12,11 +12,11 @@ export class ProductService {
   }
 
   getAllProducts(): Observable<any[]> {
-    return this.httpClient.get<any[]>('http://localhost:3000/api/products');
+    return this.httpClient.get<any[]>('http://localhost:3636/api/products');
   }
 
   deleteProduct(productId): Observable<any> {
-    return this.httpClient.delete<{ message?: string, status: string }>(`http://localhost:3000/api/products/delete/${productId}`)
+    return this.httpClient.delete<{ message?: string, status: string }>(`http://localhost:3636/api/products/delete/${productId}`)
       .pipe(
         switchMap(async (data) => {
           const prods = await this.getAllProducts().toPromise();

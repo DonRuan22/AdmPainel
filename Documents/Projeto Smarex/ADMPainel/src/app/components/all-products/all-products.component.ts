@@ -1,6 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ProductService} from '../../product.service';
 import {Subscription} from 'rxjs';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { EditProductComponent } from '../edit-product/edit-product.component';
 
 declare var $: any;
 
@@ -16,7 +18,7 @@ export class AllProductsComponent implements OnInit, OnDestroy {
   hasError = false;
   success = false;
 
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService, public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -37,6 +39,7 @@ export class AllProductsComponent implements OnInit, OnDestroy {
         if (res.status === 'failure') {
           this.hasError = true;
           this.errorMessage = res.message;
+          console.log(this.errorMessage)
         }
 
         if (res.status === 'success') {
@@ -50,4 +53,30 @@ export class AllProductsComponent implements OnInit, OnDestroy {
       }
     ));
   }
+
+  openEditForm(id: number):void {
+    this.dialog.open(EditProductComponent, {width: '500px', height: '450px', data: { id_product: id },});
+  }
+ /*
+  editProduct(id: number): void {
+    this.subs.push(this.productService.editProduct(id).subscribe(
+      res => {
+        if (res.status === 'failure') {
+          this.hasError = true;
+          this.errorMessage = res.message;
+        }
+
+        if (res.status === 'success') {
+          this.success = true;
+          this.errorMessage = res.message;
+        }
+
+        this.products = res.products;
+        console.log(this.products);
+        $('.alert').delay(1000).slideUp(1500);
+      }
+    ));
+  }
+    
+*/
 }

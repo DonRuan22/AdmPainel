@@ -1,0 +1,11 @@
+mat-form-field {
+    margin-right: 12px;
+  }
+
+.form-edit{
+  overflow: hidden;
+}
+
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import url("//fonts.googleapis.com/earlyaccess/notosanstc.css");
