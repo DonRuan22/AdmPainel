@@ -1,0 +1,68 @@
+<form novalidate #editProductForm="ngForm" class="form-edit" (ngSubmit)="onSubmit()">
+    <h1 mat-dialog-title>Editar Produto</h1>
+    <mat-dialog-content>
+      <p>
+        <mat-form-field>
+          <input matInput placeholder="Title" type="text" [(ngModel)]="product.title" name="title" #title="ngModel" required>
+          <mat-error *ngIf="title.errors?.required">Title is required</mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <button mat-raised-button type="button" color="warn" (click)="loadGoogleDrive()">
+          <mdb-icon fab icon="google-drive"></mdb-icon>
+          Choose a photo from Google drive
+        </button>
+          
+      </p>
+      <p>
+        <mat-form-field style="width: 300px;">
+          <textarea matInput
+              cdkTextareaAutosize
+              cdkAutosizeMinRows="1"
+              cdkAutosizeMaxRows="5"
+              [(ngModel)]="product.description" 
+              name="description" 
+              #description="ngModel"
+              placeholder="Description"
+              required></textarea>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input matInput placeholder="Descricao curta" type="text" [(ngModel)]="product.short_description" name="short_description" #short_description="ngModel" required>
+          <mat-error *ngIf="short_description.errors?.required">Descrição curta is required</mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input matInput placeholder="Price" type="text" [(ngModel)]="product.price" name="price" #price="ngModel" required>
+          <mat-error *ngIf="price.errors?.required">Price is required</mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input matInput placeholder="Quantity" type="text" [(ngModel)]="product.quantity" name="quantity" #quantity="ngModel" required>
+          <mat-error *ngIf="quantity.errors?.required">Quantity is required</mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Categorie</mat-label>
+          <select matNativeControl [(ngModel)]="product.cat_id" name="categorie" #categorie="ngModel" required >
+            <mat-error *ngIf="categorie.errors?.required">Categorie is required</mat-error>
+            <option value="1">1</option>
+            <option value="2">2</option>
+          </select>
+        </mat-form-field>
+      </p>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <p>
+        <button mat-raised-button mat-dialog-close color="warn">Cancelar</button>
+        <button type="submit" mat-raised-button  color="primary" (ngSubmit)="onSubmit()" class="background-primary text-floral-white" [disabled]="editProductForm.form.invalid">Editar Produto</button>
+      </p>
+    </mat-dialog-actions>
+  </form>
+  
+  
+  

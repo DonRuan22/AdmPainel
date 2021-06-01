@@ -1,0 +1,48 @@
+<div class="container my-5">
+    <div class="row">
+      <div class="col-12">
+        <div class="alert alert-danger" [hidden]="!hasError">
+          {{ errorMessage }}
+        </div>
+        <div class="alert alert-success" [hidden]="!success">
+          {{ errorMessage }}
+        </div>
+      </div>
+      <div class="col">
+        <table class="table table-bordered">
+          <thead class="bg-dark text-light">
+          <tr>
+            <th width="20%">Id Compra</th>
+            <th>Cliente</th>
+            <th>Valor</th>
+            <th>Status</th>
+            <th>Detalhes</th>
+          </tr>
+          </thead>
+  
+          <tbody>
+          <tr *ngFor="let o of orders_table">
+            <td>{{ o.id }}</td>
+            <td>{{ o.fname+" "+ o.lname}}</td>
+            <td>{{ getPrice(o.id) }}</td>
+            <td *ngIf="o.status == 0">
+              <span class="badge badge-warning" >Aguardando Pagamento</span> 
+            </td> 
+            <td *ngIf="o.status == 1">
+              <span class="badge badge-success" >Aguardando Entrega</span> 
+            </td> 
+            <td *ngIf="o.status == 2">
+              <span class="badge badge-danger" >Entregue</span> 
+            </td> 
+            <td>
+              <div class="btn-toolbar">
+                <button class="btn btn-sm btn-primary mr-3" (click) = "openDetailedForm(o.id)" >Detalhes da compra</button>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  

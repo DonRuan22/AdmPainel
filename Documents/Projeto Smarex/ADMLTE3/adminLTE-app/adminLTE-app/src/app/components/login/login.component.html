@@ -1,0 +1,35 @@
+<div class="row" style="margin-left: 400px; margin-top: 100px;">
+    <div class="col-md-6">
+        <div class="card card-primary">
+            <div class="card-header">
+            <h3 class="card-title">Login</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form novalidate #myform="ngForm">
+            <div class="card-body">
+                <div class="form-group">
+                <label for="exampleInputEmail1">Email</label>
+                <input class="form-control" id="email" type="email" [(ngModel)]="email" name="email" required>
+                </div>
+                <div class="form-group">
+                <label for="exampleInputPassword1">Senha</label>
+                <input class="form-control" id="password" type="password" [(ngModel)]="password" name="password" required>
+                </div>
+                <div class="form-group">
+                <button (click)="signInWithGoogle()" class="btn btn-danger btn-sm btn-block mt-4"><span><i
+                    class="fa fa-google"></i> Google </span>
+                </button>
+                </div>
+            </div>
+            <!-- /.card-body -->
+            
+            <div class="card-footer">
+                <button class="btn btn-primary btn-sm btn-block" (click)="login(myform)" [disabled]="myform.invalid && myform.touched">Submit</button>
+            </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-6">
+    </div>
+</div>

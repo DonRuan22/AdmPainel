@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>Detalhamento de compra ID - {{ data[0].id }}</h1>
+<div mat-dialog-content >
+    <div *ngFor="let d of data" class="form-detail">
+        <h2 class="title-3">Produto</h2>
+        <div class="content-2">{{ d.title }}</div>
+        <h2 class="title-2">Descrição do produto</h2>
+        <div class="content-2">{{ d.description }}</div>
+        <h2 class="title-2">Quantidade de produto - {{ d.quantity }}</h2>
+        <h2 class="title-2">Preço: R${{ d.price }}</h2>
+        <hr>
+    </div>
+    <h2 class="title-2">Comprador: {{ data[0].fname }} {{ data[0].lname }}</h2>
+    <h2 class="title-2">{{ data[0].email }}</h2>  
+    <h2 class="title-2">{{ data[0].line2 }}</h2>  
+    <h2 class="title-2">{{ data[0].state }}</h2> 
+    <h2 class="title-2">{{ data[0].phone }}</h2>   
+</div>
+
+
+
+
